@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Details</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reservation Details</h1>
+    <table id="reservationTable">
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Vehicle</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Reservation data will be injected here -->
+        </tbody>
+    </table>
+
+    <script>
+
+       const urlParams = new URLSearchParams(window.location.search);
+       const userId = urlParams.get('user_id'); // Get user_id from URL query
+
+        if (!userId) {
+           console.error('User ID is required');
+           return;
+        }
+
+        // Fetch reservations for the user
+        fetch('/api/reservations?user_id=${userId}') // Replace with dynamic user ID logic
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.querySelector("#reservationTable tbody");
+                data.forEach(reservation => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${reservation.id}</td>
+                        <td>${reservation.vehicle}</td>
+                        <td>${reservation.start_time}</td>
+                        <td>${reservation.end_time}</td>
+                        <td>${reservation.status}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching reservations:', error));
+    </script>
+
+
+<!-- Section for Modifying or Cancelling a Reservation -->
+<section id="manageReservation">
+    <h2>Manage Reservations</h2>
+    <form id="modifyReservationForm">
+        <label for="reservationId">Reservation ID:</label>
+        <input type="number" id="reservationId" required>
+        <label for="newStartTime">New Start Time:</label>
+        <input type="datetime-local" id="newStartTime">
+        <label for="newEndTime">New End Time:</label>
+        <input type="datetime-local" id="newEndTime">
+        <button type="submit">Modify Reservation</button>
+    </form>
+    <p id="modifyResponse"></p>
+
+    <form id="cancelReservationForm">
+        <label for="cancelReservationId">Reservation ID:</label>
+        <input type="number" id="cancelReservationId" required>
+        <button type="submit">Cancel Reservation</button>
+    </form>
+    <p id="cancelResponse"></p>
+</section>
+
+<script src="../javascript/reservation.js"></script>
+</body>
+
+</body>
+</html>

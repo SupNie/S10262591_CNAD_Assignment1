@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management</title>
+  <script defer src="../javascript/registration.js"></script>
+</head>
+<body>
+  <h1>User Management System</h1>
+
+  <!-- Retrieve All Users -->
+  <div>
+    <h2>Retrieve All Users</h2>
+    <button id="getAllUsers">Get All Users</button>
+    <div id="usersList"></div>
+  </div>
+
+  <!-- User Registration Form -->
+  <form id="registerForm">
+    <h2>Register New User</h2>
+    <label for="id">ID: </label>
+    <input type="text" id="id" required />
+    <br />
+    <label for="name">Name: </label>
+    <input type="text" id="name" required />
+    <br />
+    <label for="email">Email: </label>
+    <input type="email" id="email" required />
+    <br />
+    <label for="password">Password: </label>
+    <input type="password" id="password" required />
+    <br />
+    <label for="membershipTier">Membership Tier: </label>
+    <select id="membershipTier">
+      <option value="Basic">Basic</option>
+      <option value="Premium">Premium</option>
+      <option value="VIP">VIP</option>
+    </select>
+    <br />
+    <button type="submit">Register</button>
+  </form>
+  <p>Already have an account? <a href="login.html">Login here</a>.</p>
+  <div id="registerResponse"></div>
+
+  <!-- User Update Form -->
+  <form id="updateForm">
+    <h2>Update User</h2>
+    <label for="userId">ID: </label>
+    <input type="text" id="userId" />
+    <br />
+    <label for="updateName">Name: </label>
+    <input type="text" id="updateName" />
+    <br />
+    <label for="updateEmail">Email: </label>
+    <input type="email" id="updateEmail" />
+    <br />
+    <label for="updatePassword">Password: </label>
+    <input type="password" id="updatePassword" />
+    <br />
+    <label for="updateMembershipTier">Membership Tier: </label>
+    <select id="updateMembershipTier">
+      <option value="Basic">Basic</option>
+      <option value="Premium">Premium</option>
+      <option value="VIP">VIP</option>
+    </select>
+    <br />
+    <button type="submit">Update</button>
+  </form>
+  <div id="updateResponse"></div>
+
+  <!-- Delete User -->
+  <form id="deleteForm">
+    <h2>Delete User</h2>
+    <label for="deleteUserId">User ID: </label>
+    <input type="text" id="deleteUserId" required />
+    <br />
+    <button type="submit">Delete</button>
+  </form>
+  <div id="deleteResponse"></div>
+
+  <section class = "sub-header4">
+    <nav> 
+         <div class = "nav-links">
+          <ul>
+               <li><a href="index.html">Home</a></li>
+          </ul>
+        </div>
+    </nav>
+</section>
+
+</body>
+</html>

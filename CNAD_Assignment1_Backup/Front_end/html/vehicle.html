@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Management</title>
+    <link rel="stylesheet" href="styles.css">
+<body>
+    <h1>Vehicle Management</h1>
+
+    <!-- Form for adding and updating vehicles -->
+    <form id="vehicleForm">
+        <input type="hidden" id="vehicleId" name="vehicleId">
+        <label for="make">Make:</label>
+        <input type="text" id="make" name="make" required>
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" required>
+        <label for="availability">Available:</label>
+        <input type="checkbox" id="availability" name="availability">
+        <button type="submit">Add Vehicle</button>
+    </form>
+
+    <h2>Vehicle List</h2>
+    <table id="vehicleTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Availability</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Vehicles will be populated here -->
+        </tbody>
+    </table>
+    <script src="../javascript/vehiclesystem.js"></script>
+
+
+    <section class = "sub-header4">
+        <nav> 
+             <div class = "nav-links">
+              <ul>
+                   <li><a href="index.html">Home</a></li>
+                   <li><a href="profile.html">User Profile</a></li>
+                   <li><a href="reservation.html">To Reserve car</a></li>
+              </ul>
+            </div>
+        </nav>
+    </section>
+</body>
+</html>

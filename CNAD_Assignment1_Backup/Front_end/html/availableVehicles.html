@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Vehicles</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Available Vehicles</h1>
+    <div id="vehicleList">
+        <ul id="vehicleItems"></ul>
+    </div>
+
+    <form id="reservationForm">
+        <h2>Book a Vehicle</h2>
+        <label>Vehicle ID:</label>
+        <input type="text" id="vehicleId" required /><br />
+        <label>Start Time:</label>
+        <input type="datetime-local" id="startTime" required /><br />
+        <label>End Time:</label>
+        <input type="datetime-local" id="endTime" required /><br />
+        <button type="submit">Reserve</button>
+    </form>
+
+    <script src="../javascript/vehicle.js"></script>
+    <script>
+        // Assuming you're using fetch API or a similar method to submit the reservation
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Gather form data
+            const vehicleId = document.getElementById('vehicleId').value;
+            const startTime = document.getElementById('startTime').value;
+            const endTime = document.getElementById('endTime').value;
+
+            // Make the reservation via API (you can use fetch or AJAX for this)
+            fetch('/api/reservations', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    vehicle_id: vehicleId,
+                    start_time: startTime,
+                    end_time: endTime
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // After successful reservation, redirect to reservation.html
+                    window.location.href = 'reservation.html';
+                } else {
+                    // Show error message if reservation fails
+                    alert('Failed to reserve vehicle');
+                }
+            })
+            .catch(error => {
+                console.error('Error making reservation:', error);
+                alert('Error making reservation');
+            });
+        });
+    </script>
+
+    <section class = "sub-header4">
+      <nav> 
+         <div class = "nav-links">
+          <ul>
+               <li><a href="reservation.html">To See the Reservation</a></li>
+               <li><a href="billing.html">To See the Billing</a></li>
+          </ul>
+        </div>
+     </nav>
+    </section>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Billing System</h1>
+
+    <div id="billingInfo">
+        <h2>Billing Information</h2>
+        <label for="billingId">Enter Billing ID:</label>
+        <input type="text" id="billingId" required />
+        <button id="fetchBillingBtn">Fetch Billing Info</button>
+    </div>
+
+    <div id="billingDetails">
+        <h3>Billing Details</h3>
+        <p><strong>Billing ID:</strong> <span id="billingIdDetails"></span></p>
+        <p><strong>Amount:</strong> $<span id="amountDetails"></span></p>
+        <p><strong>Payment Status:</strong> <span id="paymentStatusDetails"></span></p>
+    </div>
+
+    <div id="costDetails">
+        <h3>Cost Details</h3>
+        <p><strong>Vehicle Type:</strong> <span id="vehicleTypeDetails"></span></p>
+        <p><strong>Membership Level:</strong> <span id="membershipLevelDetails"></span></p>
+        <p><strong>Total Cost:</strong> $<span id="totalCostDetails"></span></p>
+    </div>
+
+    <div id="invoiceSection">
+        <h3>Invoice</h3>
+        <button id="generateInvoiceBtn">Generate Invoice</button>
+        <p id="invoiceMessage"></p>
+    </div>
+
+    <div id="receiptSection">
+        <h3>Receipt</h3>
+        <button id="generateReceiptBtn">Generate Receipt</button>
+        <p id="receiptMessage"></p>
+    </div>
+
+    <script src="../javascript/billingsystem.js"></script>
+</body>
+</html>
